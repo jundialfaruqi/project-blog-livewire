@@ -4,6 +4,7 @@ namespace App\Livewire\Users;
 
 use App\Models\User;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,7 @@ use Illuminate\Validation\Rule;
 
 class UpdateUser extends Component
 {
+    #[Locked]
     public User $user;
     public $name = '';
     public $email = '';
@@ -23,6 +25,9 @@ class UpdateUser extends Component
 
     public function mount(User $user)
     {
+        // Authorization check
+        $this->authorize('update', $user);
+        
         $this->user = $user;
         $this->name = $user->name;
         $this->email = $user->email;
@@ -32,26 +37,33 @@ class UpdateUser extends Component
     protected function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/',
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8|confirmed|regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/',
             'selectedRoles' => 'required|array|min:1',
+            'selectedRoles.*' => 'exists:roles,name',
         ];
     }
 
     protected $messages = [
         'name.required' => 'Nama wajib diisi.',
+        'name.regex' => 'Nama hanya boleh berisi huruf dan spasi.',
         'email.required' => 'Email wajib diisi.',
         'email.email' => 'Format email tidak valid.',
         'email.unique' => 'Email sudah digunakan.',
         'password.min' => 'Password minimal 8 karakter.',
         'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        'password.regex' => 'Password harus mengandung huruf dan angka.',
         'selectedRoles.required' => 'Pilih minimal satu role.',
         'selectedRoles.min' => 'Pilih minimal satu role.',
+        'selectedRoles.*.exists' => 'Role yang dipilih tidak valid.',
     ];
 
     public function save()
     {
+        // Authorization check
+        $this->authorize('update', $this->user);
+        
         $this->validate();
 
         $updateData = [

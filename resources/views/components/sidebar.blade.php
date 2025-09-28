@@ -80,7 +80,7 @@
             <li class="menu-title">
                 <span>Main Menu</span>
             </li>
-            <li><a class="active">
+            <li><a wire:navigate href="{{ route('dashboard.index') }}" class="active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -155,7 +155,7 @@
                             <a># Data Role Pengguna</a>
                         </li>
                         <li>
-                            <a># Daftar Pengguna</a>
+                            <a href="{{ route('users.index') }}"># Daftar Pengguna</a>
                         </li>
                     </ul>
                 </details>
