@@ -64,26 +64,34 @@ class UpdateUser extends Component
         // Authorization check
         $this->authorize('update', $this->user);
         
+        // Validation errors will be handled by Livewire automatically
         $this->validate();
 
-        $updateData = [
-            'name' => $this->name,
-            'email' => $this->email,
-        ];
+        try {
+            $updateData = [
+                'name' => $this->name,
+                'email' => $this->email,
+            ];
 
-        // Only update password if provided
-        if (!empty($this->password)) {
-            $updateData['password'] = Hash::make($this->password);
+            // Only update password if provided
+            if (!empty($this->password)) {
+                $updateData['password'] = Hash::make($this->password);
+            }
+
+            $this->user->update($updateData);
+
+            // Sync roles
+            $this->user->syncRoles($this->selectedRoles);
+
+            // Session flash for toast on redirect page
+            session()->flash('success', 'User berhasil diperbarui!');
+            
+            return redirect()->route('users.index');
+            
+        } catch (\Exception $e) {
+            // Only show toast for system errors, not validation errors
+            session()->flash('error', 'Gagal memperbarui user: ' . $e->getMessage());
         }
-
-        $this->user->update($updateData);
-
-        // Sync roles
-        $this->user->syncRoles($this->selectedRoles);
-
-        session()->flash('message', 'User berhasil diperbarui!');
-        
-        return redirect()->route('users.index');
     }
 
     public function render()

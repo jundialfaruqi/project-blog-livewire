@@ -80,7 +80,8 @@
             <li class="menu-title">
                 <span>Main Menu</span>
             </li>
-            <li><a wire:navigate href="{{ route('dashboard.index') }}" class="active">
+            <li><a wire:navigate href="{{ route('dashboard.index') }}" 
+                   class="{{ request()->routeIs('dashboard.index') ? 'menu-active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -88,7 +89,7 @@
                     </svg>
                     <span class="menu-item-text">Dashboard</span>
                 </a></li>
-            <li><a>
+            <li><a {{-- href="{{ route('videos.index') }}" class="{{ request()->routeIs('videos.*') ? 'menu-active' : '' }}" --}}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -96,7 +97,7 @@
                     </svg>
                     <span class="menu-item-text">Videos</span>
                 </a></li>
-            <li><a>
+            <li><a {{-- href="{{ route('categories.index') }}" class="{{ request()->routeIs('categories.*') ? 'menu-active' : '' }}" --}}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -108,7 +109,7 @@
             <li class="menu-title mt-4">
                 <span>Content Management</span>
             </li>
-            <li><a>
+            <li><a {{-- href="{{ route('pages.index') }}" class="{{ request()->routeIs('pages.*') ? 'menu-active' : '' }}" --}}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -116,7 +117,7 @@
                     </svg>
                     <span class="menu-item-text">Pages</span>
                 </a></li>
-            <li><a>
+            <li><a {{-- href="{{ route('comments.index') }}" class="{{ request()->routeIs('comments.*') ? 'menu-active' : '' }}" --}}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -129,7 +130,7 @@
                 <span>Settings</span>
             </li>
             <li>
-                <a>
+                <a {{-- href="{{ route('settings.general') }}" class="{{ request()->routeIs('settings.general') ? 'menu-active' : '' }}" --}}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -142,7 +143,7 @@
             </li>
             <li>
                 <details open>
-                    <summary>
+                    <summary class="{{ request()->routeIs('users.*') || request()->routeIs('roles.*') ? 'menu-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -152,10 +153,12 @@
                     </summary>
                     <ul class="text-gray-500 text-sm">
                         <li>
-                            <a># Data Role Pengguna</a>
+                            <a href="{{ route('roles.index') }}" 
+                               class="{{ request()->routeIs('roles.*') ? 'menu-active' : '' }}"># Data Role Pengguna</a>
                         </li>
                         <li>
-                            <a href="{{ route('users.index') }}"># Daftar Pengguna</a>
+                            <a href="{{ route('users.index') }}" 
+                               class="{{ request()->routeIs('users.*') ? 'menu-active' : '' }}"># Daftar Pengguna</a>
                         </li>
                     </ul>
                 </details>

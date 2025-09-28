@@ -62,5 +62,14 @@ class RolesAndPermissionsSeeder extends Seeder
         // Assign roles to users
         $user = \App\Models\User::find(1);
         $user->assignRole('admin');
+        
+        $user = \App\Models\User::find(2);
+        $user->assignRole('manager');
+        
+        $user = \App\Models\User::find(3);
+        $user->assignRole('moderator');
+        
+        $user = \App\Models\User::find(4);
+        $user->assignRole('writer');
     }
 }

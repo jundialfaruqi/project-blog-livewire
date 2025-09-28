@@ -9,6 +9,7 @@
 </head>
 
 <body class="min-h-screen bg-base-200">
+
     <div class="drawer lg:drawer-open">
         <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
 
@@ -17,6 +18,10 @@
 
         <!-- Page content -->
         <div class="drawer-content flex flex-col">
+
+            {{-- Toast Messages --}}
+            @include('components.toast')
+
             <!-- Navbar -->
             @include('components.navbar')
 

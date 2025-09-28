@@ -22,6 +22,24 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin123'),
         ]);
 
+        User::factory()->create([
+            'name' => 'Manager',
+            'email' => 'manager@mail.com',
+            'password' => Hash::make('admin123'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Moderator',
+            'email' => 'moderator@mail.com',
+            'password' => Hash::make('admin123'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Writer',
+            'email' => 'writer@mail.com',
+            'password' => Hash::make('admin123'),
+        ]);
+
         $this->call(RolesAndPermissionsSeeder::class);
     }
 }

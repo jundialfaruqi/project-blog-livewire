@@ -40,19 +40,27 @@ class CreateUser extends Component
 
     public function save()
     {
+        // Validation errors will be handled by Livewire automatically
         $this->validate();
 
-        $user = User::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-        ]);
+        try {
+            $user = User::create([
+                'name' => $this->name,
+                'email' => $this->email,
+                'password' => Hash::make($this->password),
+            ]);
 
-        $user->assignRole($this->selectedRoles);
+            $user->assignRole($this->selectedRoles);
 
-        session()->flash('message', 'User berhasil ditambahkan!');
-        
-        return redirect()->route('users.index');
+            // Session flash for toast on redirect page
+            session()->flash('success', 'User berhasil ditambahkan!');
+            
+            return redirect()->route('users.index');
+            
+        } catch (\Exception $e) {
+            // Only show toast for system errors, not validation errors
+            session()->flash('error', 'Gagal menambahkan user: ' . $e->getMessage());
+        }
     }
 
     public function render()

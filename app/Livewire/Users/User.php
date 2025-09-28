@@ -19,30 +19,43 @@ class User extends Component
         try {
             $user = UserModel::findOrFail($userId);
             
-            // Check authorization using the UserPolicy
+            // Memeriksa apakah pengguna memiliki izin untuk menghapus user
             $this->authorize('delete', $user);
             
-            // Prevent user from deleting themselves
+            // Memeriksa apakah pengguna mencoba menghapus akun mereka sendiri
             if ($user->id === Auth::id()) {
-                session()->flash('error', 'Anda tidak dapat menghapus akun Anda sendiri.');
+                $message = 'Anda tidak dapat menghapus akun Anda sendiri.';
+                session()->flash('error', $message);
+                $this->dispatch('toast-error', message: $message);
                 return;
             }
             
+            // Menyimpan nama user sebelum dihapus
             $userName = $user->name;
+
+            // Menghapus user
             $user->delete();
             
-            session()->flash('success', "User '{$userName}' berhasil dihapus.");
+            $message = "User '{$userName}' berhasil dihapus.";
+            session()->flash('success', $message);
+            $this->dispatch('toast-success', message: $message);
             
         } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
-            session()->flash('error', 'Anda tidak memiliki izin untuk menghapus user ini.');
+            $message = 'Anda tidak memiliki izin untuk menghapus user ini.';
+            session()->flash('error', $message);
+            $this->dispatch('toast-error', message: $message);
         } catch (\Exception $e) {
-            session()->flash('error', 'Terjadi kesalahan saat menghapus user.');
+            $message = 'Terjadi kesalahan saat menghapus user.';
+            session()->flash('error', $message);
+            $this->dispatch('toast-error', message: $message);
         }
     }
 
     public function render()
     {
-        $users = UserModel::with('roles')->select('id', 'name', 'email')->paginate(10);
+        $users = UserModel::with('roles')->select('id', 'name', 'email', 'created_at')
+            ->latest()
+            ->paginate(10);
         
         // Statistics data
         $totalUsers = UserModel::count();

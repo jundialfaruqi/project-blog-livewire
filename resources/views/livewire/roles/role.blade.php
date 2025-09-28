@@ -7,12 +7,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         class="inline-block w-6 h-6 md:w-8 md:h-8 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                 </div>
-                <div class="stat-title">Total User</div>
-                <div class="stat-value text-primary text-2xl md:text-3xl">{{ $totalUsers }}</div>
-                <div class="stat-desc">Semua pengguna terdaftar</div>
+                <div class="stat-title">Total Role</div>
+                <div class="stat-value text-primary text-2xl md:text-3xl">{{ $totalRoles }}</div>
+                <div class="stat-desc">Semua role terdaftar</div>
             </div>
 
             <div class="stat">
@@ -24,8 +24,8 @@
                         </path>
                     </svg>
                 </div>
-                <div class="stat-title">User Baru</div>
-                <div class="stat-value text-secondary text-2xl md:text-3xl">{{ $newUsers }}</div>
+                <div class="stat-title">Role Baru</div>
+                <div class="stat-value text-secondary text-2xl md:text-3xl">{{ $newRoles }}</div>
                 <div class="stat-desc">30 hari terakhir</div>
             </div>
 
@@ -34,13 +34,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         class="inline-block w-6 h-6 md:w-8 md:h-8 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
-                        </path>
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                 </div>
-                <div class="stat-title">Writer & Moderator</div>
-                <div class="stat-value text-accent text-2xl md:text-3xl">{{ $writerModerators }}</div>
-                <div class="stat-desc">Total user dengan role khusus</div>
+                <div class="stat-title">Total Users</div>
+                <div class="stat-value text-accent text-2xl md:text-3xl">{{ $rolesWithUsers }}</div>
+                <div class="stat-desc">User dengan role</div>
             </div>
         </div>
 
@@ -56,14 +55,14 @@
                                     d="M216,148H172V108h44a12,12,0,0,0,0-24H172V40a12,12,0,0,0-24,0V84H108V40a12,12,0,0,0-24,0V84H40a12,12,0,0,0,0,24H84v40H40a12,12,0,0,0,0,24H84v44a12,12,0,0,0,24,0V172h40v44a12,12,0,0,0,24,0V172h44a12,12,0,0,0,0-24Zm-108,0V108h40v40Z">
                                 </path>
                             </svg>
-                            <h4 class="text-lg font-semibold">Data User</h4>
+                            <h4 class="text-lg font-semibold">Data Role</h4>
                         </div>
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm" wire:navigate>
+                        <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm" wire:navigate>
                             <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>
-                            Tambah User
+                            Tambah Role
                         </a>
                     </div>
                 </div>
@@ -72,77 +71,63 @@
                         <thead>
                             <tr>
                                 <th>
-                                    # Name <span class="hidden sm:inline">&amp; Email</span>
+                                    # Name <span class="hidden sm:inline">&amp; Permissions</span>
                                 </th>
-                                <th class="hidden sm:table-cell"># Role</th>
+                                <th class="hidden sm:table-cell"># Users Count</th>
                                 <th class="hidden sm:table-cell"># Created At</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($users->count() > 0)
-                                @foreach ($users as $user)
+                            @if ($roles->count() > 0)
+                                @foreach ($roles as $role)
                                     <tr>
                                         <td class="align-middle">
                                             <div class="flex items-center gap-2 min-w-0">
                                                 <div class="avatar avatar-placeholder hidden sm:flex shrink-0">
                                                     <div class="bg-neutral text-neutral-content w-10 rounded-full">
                                                         <span class="font-bold">
-                                                            {{ strtoupper(collect(explode(' ', $user->name))->map(fn($word) => substr($word, 0, 1))->take(2)->implode('')) }}
+                                                            {{ strtoupper(substr($role->name, 0, 2)) }}
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="min-w-0">
-                                                    <div class="font-medium truncate" title="{{ $user->name }}">
-                                                        {{ $user->name }}
+                                                    <div class="font-medium truncate" title="{{ $role->name }}">
+                                                        {{ ucfirst($role->name) }}
                                                     </div>
 
                                                     <div class="flex items-center gap-1 text-sm text-primary min-w-0">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="size-4 shrink-0 hidden sm:inline truncate">
+                                                            class="size-4 shrink-0 hidden sm:inline">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                                                d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                                                         </svg>
-                                                        <span class="hidden sm:inline truncate"
-                                                            title="{{ $user->email }}">{{ $user->email }}</span>
+                                                        <span class="hidden sm:inline truncate">
+                                                            {{ $role->permissions->count() }} permissions
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
 
                                         <td class="hidden sm:table-cell">
-                                            <div class="flex flex-wrap gap-1">
-                                                @foreach ($user->roles as $role)
-                                                    @php
-                                                        $badgeClass = match (strtolower($role->name)) {
-                                                            'admin' => 'badge-error',
-                                                            'super admin' => 'badge-error',
-                                                            'superadmin' => 'badge-error',
-                                                            'manager' => 'badge-warning',
-                                                            'editor' => 'badge-info',
-                                                            'moderator' => 'badge-secondary',
-                                                            'user' => 'badge-neutral',
-                                                            'guest' => 'badge-ghost',
-                                                            default => 'badge-primary',
-                                                        };
-                                                    @endphp
-                                                    <span class="badge font-bold {{ $badgeClass }}">
-                                                        {{ $role->name }}
-                                                    </span>
-                                                @endforeach
+                                            <div class="badge badge-outline">
+                                                {{ $role->users_count }} users
                                             </div>
                                         </td>
+
                                         <td class="hidden sm:table-cell">
                                             <div class="text-sm text-gray-500">
-                                                {{ $user->created_at->format('d/m/Y') }}</div>
+                                                {{ $role->created_at->format('d M Y') }}
+                                            </div>
                                         </td>
+
                                         <td class="text-end">
                                             <div class="flex justify-end space-x-2">
-                                                @can('edit-user')
-                                                    <a href="{{ route('users.edit', $user->id) }}"
-                                                        class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow hover:bg-blue-500/20 hover:border-blue-500/40"
-                                                        wire:navigate>
+                                                @can('edit-role')
+                                                    <a href="{{ route('roles.edit', $role->id) }}" wire:navigate
+                                                        class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow hover:bg-blue-500/20 hover:border-blue-500/40 transition-colors">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                             class="size-[1.2em]">
@@ -152,8 +137,8 @@
                                                     </a>
                                                 @endcan
 
-                                                @can('delete-user')
-                                                    <button onclick="delete_modal_{{ $user->id }}.showModal()"
+                                                @can('delete-role')
+                                                    <button onclick="delete_modal_{{ $role->id }}.showModal()"
                                                         class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow hover:bg-red-500/20 hover:border-red-500/40 transition-colors">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -169,13 +154,13 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="3" class="text-center">Tidak ada data user</td>
+                                    <td colspan="4" class="text-center">Tidak ada data role</td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
                     <div class="mt-4">
-                        {{ $users->links('custom-pagination') }}
+                        {{ $roles->links('custom-pagination') }}
                     </div>
                 </div>
             </div>
@@ -183,10 +168,10 @@
     </div>
 
     <!-- Delete Confirmation Modals -->
-    @if ($users->count() > 0)
-        @foreach ($users as $user)
-            @can('delete-user')
-                <dialog id="delete_modal_{{ $user->id }}" class="modal modal-bottom sm:modal-middle">
+    @if ($roles->count() > 0)
+        @foreach ($roles as $role)
+            @can('delete-role')
+                <dialog id="delete_modal_{{ $role->id }}" class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box relative">
                         <!-- Close button -->
                         <form method="dialog">
@@ -199,57 +184,36 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.268 16.5c-.77.833.192 2.5 1.732 2.5z" />
                                 </svg>
                             </div>
                         </div>
 
-                        <!-- Title -->
-                        <h3 class="font-bold text-lg text-center mb-2">Konfirmasi Hapus User</h3>
-
-                        <!-- Message -->
-                        <div class="text-center mb-6">
-                            <p class="text-gray-600 mb-2">Apakah Anda yakin ingin menghapus user:</p>
-                            <p class="font-semibold text-lg">{{ $user->name }}</p>
-                            <p class="text-sm text-gray-500 mt-1">{{ $user->email }}</p>
-                            <div class="alert alert-warning mt-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6"
-                                    fill="none" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                                </svg>
-                                <span class="text-sm">Tindakan ini tidak dapat dibatalkan!</span>
-                            </div>
+                        <!-- Content -->
+                        <div class="text-center">
+                            <h3 class="text-lg font-bold mb-2">Konfirmasi Hapus Role</h3>
+                            <p class="text-gray-600 mb-6">
+                                Apakah Anda yakin ingin menghapus role <strong>"{{ $role->name }}"</strong>?
+                                <br>
+                                <span class="text-sm text-red-600">Tindakan ini tidak dapat dibatalkan!</span>
+                            </p>
                         </div>
 
-                        <!-- Action buttons -->
-                        <div class="modal-action justify-center gap-3">
+                        <!-- Actions -->
+                        <div class="flex gap-3 justify-center">
                             <form method="dialog">
-                                <button class="btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                    Batal
-                                </button>
+                                <button class="btn">Batal</button>
                             </form>
-                            <button wire:click="deleteUser({{ $user->id }})"
-                                onclick="delete_modal_{{ $user->id }}.close()" class="btn btn-error text-white">
+                            <button wire:click="deleteRole({{ $role->id }})" class="btn btn-error text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
-                                Ya, Hapus User
+                                Hapus Role
                             </button>
                         </div>
                     </div>
-
-                    <!-- Modal backdrop - click outside to close -->
-                    <form method="dialog" class="modal-backdrop">
-                        <button>close</button>
-                    </form>
                 </dialog>
             @endcan
         @endforeach
