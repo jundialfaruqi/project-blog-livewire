@@ -82,7 +82,7 @@
                             </svg>
                             <h4 class="text-lg font-semibold">Data User</h4>
                         </div>
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
+                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm" wire:navigate>
                             <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -95,8 +95,7 @@
                     <table class="table table-zebra table-compact text-sm md:text-base">
                         <thead>
                             <tr>
-                                <th># Name</th>
-                                <th class="hidden sm:table-cell"># Email</th>
+                                <th># Name & Email</th>
                                 <th class="hidden md:table-cell"># Role</th>
                                 <th></th>
                             </tr>
@@ -105,15 +104,45 @@
                             @if ($users->count() > 0)
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td class="hidden sm:table-cell">{{ $user->email }}</td>
+                                        <td>
+                                            <div>{{ $user->name }}</div>
+                                            <div class="flex text-sm text-primary gap-1 items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                                </svg>
+                                                {{ $user->email }}
+                                            </div>
+                                        </td>
                                         <td class="hidden md:table-cell">
-                                            {{ $user->roles->pluck('name')->implode(', ') }}
+                                            <div class="flex flex-wrap gap-1">
+                                                @foreach ($user->roles as $role)
+                                                    @php
+                                                        $badgeClass = match (strtolower($role->name)) {
+                                                            'admin' => 'badge-error',
+                                                            'super admin' => 'badge-error',
+                                                            'superadmin' => 'badge-error',
+                                                            'manager' => 'badge-warning',
+                                                            'editor' => 'badge-info',
+                                                            'moderator' => 'badge-secondary',
+                                                            'user' => 'badge-neutral',
+                                                            'guest' => 'badge-ghost',
+                                                            default => 'badge-primary',
+                                                        };
+                                                    @endphp
+                                                    <span class="badge font-bold {{ $badgeClass }}">
+                                                        {{ $role->name }}
+                                                    </span>
+                                                @endforeach
+                                            </div>
                                         </td>
                                         <td class="text-right">
                                             @can('edit-user')
                                                 <a href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow">
+                                                    class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow"
+                                                    wire:navigate>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                         class="size-[1.2em]">
@@ -144,8 +173,8 @@
                             @endif
                         </tbody>
                     </table>
-                    <div class="mt-4 flex justify-end">
-                        {{ $users->links() }}
+                    <div class="mt-4">
+                        {{ $users->links('custom-pagination') }}
                     </div>
                 </div>
             </div>

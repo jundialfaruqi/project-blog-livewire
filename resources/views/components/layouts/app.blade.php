@@ -41,7 +41,6 @@
         {{-- Dock --}}
         @include('components.dock')
     </div>
-    @livewireScripts
 
 </body>
 
