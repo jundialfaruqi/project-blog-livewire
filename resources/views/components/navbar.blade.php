@@ -120,7 +120,9 @@
                 <div
                     class="w-10 h-10 rounded-full flex items-center justify-center 
                             backdrop-blur-md bg-white/10 border border-white/20 shadow">
-                    <span class="font-bold">JD</span>
+                    <span class="font-bold">
+                        {{ strtoupper(collect(explode(' ', Auth::user()->name))->map(fn($word) => substr($word, 0, 1))->take(2)->implode('')) }}
+                    </span>
                 </div>
             </div>
         </div>

@@ -15,12 +15,14 @@
                     <div class="flex items-center">
                         <div class="avatar avatar-placeholder">
                             <div class="bg-neutral text-neutral-content w-10 rounded-full">
-                                <span class="font-bold">JD</span>
+                                <span
+                                    class="font-bold">{{ strtoupper(collect(explode(' ', Auth::user()->name))->map(fn($word) => substr($word, 0, 1))->take(2)->implode('')) }}</span>
                             </div>
                         </div>
                         <div class="ml-3 menu-item-text">
-                            <p class="font-medium text-sm">John Doe</p>
-                            <p class="text-xs text-base-content/70">Administrator</p>
+                            <p class="font-medium text-sm">{{ Auth::user()->name }}</p>
+                            <p class="text-xs text-base-content/70">{{ Auth::user()->getRoleNames()->implode(', ') }}
+                            </p>
                         </div>
                     </div>
                     <button class="btn btn-ghost btn-sm px-2 rounded-full menu-item-text">
