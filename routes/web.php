@@ -8,6 +8,9 @@ use App\Livewire\Users\UpdateUser;
 use App\Livewire\Roles\Role;
 use App\Livewire\Roles\CreateRole;
 use App\Livewire\Roles\UpdateRole;
+use App\Livewire\Permissions\Permission;
+use App\Livewire\Permissions\CreatePermission;
+use App\Livewire\Permissions\UpdatePermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +30,10 @@ Route::middleware(['auth', 'role:admin|manager'])->group(function () {
     Route::get('roles', Role::class)->name('roles.index');
     Route::get('roles/create', CreateRole::class)->name('roles.create');
     Route::get('roles/{role}/edit', UpdateRole::class)->name('roles.edit');
+    
+    Route::get('permissions', Permission::class)->name('permissions.index');
+    Route::get('permissions/create', CreatePermission::class)->name('permissions.create');
+    Route::get('permissions/{permission}/edit', UpdatePermission::class)->name('permissions.edit');
 });
 
 Route::middleware(['auth'])->group(function () {

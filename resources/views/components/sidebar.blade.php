@@ -80,8 +80,8 @@
             <li class="menu-title">
                 <span>Main Menu</span>
             </li>
-            <li><a wire:navigate href="{{ route('dashboard.index') }}" 
-                   class="{{ request()->routeIs('dashboard.index') ? 'menu-active' : '' }}">
+            <li><a wire:navigate href="{{ route('dashboard.index') }}"
+                    class="{{ request()->routeIs('dashboard.index') ? 'menu-active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -143,22 +143,29 @@
             </li>
             <li>
                 <details open>
-                    <summary class="{{ request()->routeIs('users.*') || request()->routeIs('roles.*') ? 'menu-active' : '' }}">
+                    <summary
+                        class="{{ request()->routeIs('users.*') || request()->routeIs('roles.*') ? 'menu-active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        <span class="menu-item-text">Manajemen Pengguna</span>
+                        <span class="menu-item-text">User Management</span>
                     </summary>
                     <ul class="text-gray-500 text-sm">
                         <li>
-                            <a href="{{ route('roles.index') }}" 
-                               class="{{ request()->routeIs('roles.*') ? 'menu-active' : '' }}"># Data Role Pengguna</a>
+                            <a href="{{ route('roles.index') }}"
+                                class="{{ request()->routeIs('roles.*') ? 'menu-active' : '' }}"># Role
+                                Pengguna</a>
                         </li>
                         <li>
-                            <a href="{{ route('users.index') }}" 
-                               class="{{ request()->routeIs('users.*') ? 'menu-active' : '' }}"># Daftar Pengguna</a>
+                            <a href="{{ route('permissions.index') }}"
+                                class="{{ request()->routeIs('permissions.*') ? 'menu-active' : '' }}">#
+                                Permission</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.index') }}"
+                                class="{{ request()->routeIs('users.*') ? 'menu-active' : '' }}"># Users</a>
                         </li>
                     </ul>
                 </details>
