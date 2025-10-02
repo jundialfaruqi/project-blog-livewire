@@ -13,7 +13,8 @@
                             placeholder="Masukkan nama permission (contoh: create-article, edit-user)">
                         @error('name')
                             <label class="label">
-                                <span class="label-text-alt text-error break-words whitespace-normal leading-relaxed">{{ $message }}</span>
+                                <span
+                                    class="label-text-alt text-error break-words whitespace-normal leading-relaxed">{{ $message }}</span>
                             </label>
                         @enderror
                     </div>
@@ -25,20 +26,18 @@
                         <span class="label-text font-medium">Roles</span>
                         <span class="label-text-alt">Pilih role yang akan memiliki permission ini</span>
                     </label>
-                    <div class="space-y-4 p-4 border border-base-300 rounded-lg">
-                        @if($roles->count() > 0)
-                            <div class="border border-base-200 rounded-lg p-4 bg-base-50">
+                    <div class="space-y-4">
+                        @if ($roles->count() > 0)
+                            <div class="border border-base-300 rounded-lg p-4 bg-base-50">
                                 <div class="flex items-center justify-between mb-3">
                                     <h3 class="font-semibold text-base-content">Available Roles</h3>
                                     <div class="flex gap-2">
-                                        <button type="button" 
-                                                onclick="selectAllRoles()"
-                                                class="btn btn-xs btn-outline btn-primary">
+                                        <button type="button" onclick="selectAllRoles()"
+                                            class="btn btn-xs btn-outline btn-primary">
                                             Select All
                                         </button>
-                                        <button type="button" 
-                                                onclick="deselectAllRoles()"
-                                                class="btn btn-xs btn-outline">
+                                        <button type="button" onclick="deselectAllRoles()"
+                                            class="btn btn-xs btn-outline">
                                             Deselect All
                                         </button>
                                     </div>
@@ -46,19 +45,20 @@
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                                     @foreach ($roles as $role)
                                         <label class="label cursor-pointer justify-start gap-3" data-group="roles">
-                                            <input type="checkbox" 
-                                                   wire:model="selectedRoles" 
-                                                   value="{{ $role->name }}"
-                                                   class="checkbox checkbox-sm role-checkbox">
-                                            <span class="label-text">{{ ucfirst(str_replace('-', ' ', $role->name)) }}</span>
+                                            <input type="checkbox" wire:model="selectedRoles"
+                                                value="{{ $role->name }}" class="checkbox checkbox-sm role-checkbox">
+                                            <span
+                                                class="label-text">{{ ucfirst(str_replace('-', ' ', $role->name)) }}</span>
                                         </label>
                                     @endforeach
                                 </div>
                             </div>
                         @else
                             <div class="text-center py-8 text-gray-500">
-                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2M4 13h2m13-8V4a1 1 0 00-1-1H7a1 1 0 00-1 1v1m8 0V4a1 1 0 00-1-1H9a1 1 0 00-1 1v1m4 6h.01M12 17h.01" />
+                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2M4 13h2m13-8V4a1 1 0 00-1-1H7a1 1 0 00-1 1v1m8 0V4a1 1 0 00-1-1H9a1 1 0 00-1 1v1m4 6h.01M12 17h.01" />
                                 </svg>
                                 <p class="mt-2">Belum ada role yang tersedia</p>
                                 <p class="text-sm">Buat role terlebih dahulu untuk mengassign permission</p>
@@ -133,7 +133,7 @@
                         </div>
                     </div>
 
-                    <div class="alert backdrop-blur-md bg-warning-content/90 border border-white/20 shadow">
+                    <div class="alert backdrop-blur-md bg-primary-content/70 border border-white/20 shadow">
                         <div class="text-sm">
                             <p class="font-medium mb-2">Catatan Penting:</p>
                             <ul class="list-disc list-inside space-y-1">
@@ -144,7 +144,7 @@
                         </div>
                     </div>
 
-                    <div class="alert backdrop-blur-md bg-info-content/90 border border-white/20 shadow">
+                    <div class="alert backdrop-blur-md bg-primary-content/50 border border-white/20 shadow">
                         <div class="text-sm">
                             <p class="font-medium mb-2">Tips:</p>
                             <ul class="list-disc list-inside space-y-1">

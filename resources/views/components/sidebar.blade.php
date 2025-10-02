@@ -155,17 +155,21 @@
                     <ul class="text-gray-500 text-sm">
                         <li>
                             <a href="{{ route('roles.index') }}"
-                                class="{{ request()->routeIs('roles.*') ? 'menu-active' : '' }}"># Role
-                                Pengguna</a>
+                                class="{{ request()->routeIs('roles.*') ? 'menu-active' : '' }}">
+                                # User Role
+                            </a>
                         </li>
                         <li>
                             <a href="{{ route('permissions.index') }}"
-                                class="{{ request()->routeIs('permissions.*') ? 'menu-active' : '' }}">#
-                                Permission</a>
+                                class="{{ request()->routeIs('permissions.*') ? 'menu-active' : '' }}">
+                                # User Permission
+                            </a>
                         </li>
                         <li>
                             <a href="{{ route('users.index') }}"
-                                class="{{ request()->routeIs('users.*') ? 'menu-active' : '' }}"># Users</a>
+                                class="{{ request()->routeIs('users.*') ? 'menu-active' : '' }}">
+                                # Users
+                            </a>
                         </li>
                     </ul>
                 </details>

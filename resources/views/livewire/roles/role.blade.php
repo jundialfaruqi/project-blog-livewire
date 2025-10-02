@@ -192,11 +192,10 @@
                         <!-- Content -->
                         <div class="text-center">
                             <h3 class="text-lg font-bold mb-2">Konfirmasi Hapus Role</h3>
-                            <p class="text-gray-600 mb-6">
+                            <p class="text-gray-600 mb-2">
                                 Apakah Anda yakin ingin menghapus role <strong>"{{ $role->name }}"</strong>?
-                                <br>
-                                <span class="text-sm text-red-600">Tindakan ini tidak dapat dibatalkan!</span>
                             </p>
+                            <p class="text-sm text-red-600 mb-4">Tindakan ini tidak dapat dibatalkan!</p>
                         </div>
 
                         <!-- Actions -->

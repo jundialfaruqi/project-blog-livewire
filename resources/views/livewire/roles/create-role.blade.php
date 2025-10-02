@@ -24,36 +24,35 @@
                     <label class="label mb-2">
                         <span class="label-text font-medium">Permissions <span class="text-error">*</span></span>
                     </label>
-                    <div class="space-y-4 p-4 border border-base-300 rounded-lg @error('selectedPermissions') @enderror">
+                    <div class="space-y-4 @error('selectedPermissions') @enderror">
                         @foreach ($groupedPermissions as $groupName => $permissions)
-                            <div class="border border-base-200 rounded-lg p-4 bg-base-50">
+                            <div class="border border-base-300 rounded-lg p-4 bg-base-50">
                                 <!-- Group Header -->
                                 <div class="flex items-center justify-between mb-3">
                                     <h4 class="font-semibold text-base-content">{{ $groupName }}</h4>
                                     <div class="flex gap-2">
-                                        <button type="button" 
-                                                onclick="selectAllInGroup('{{ $groupName }}')"
-                                                class="btn btn-xs btn-outline">
+                                        <button type="button" onclick="selectAllInGroup('{{ $groupName }}')"
+                                            class="btn btn-xs btn-outline">
                                             Select All
                                         </button>
-                                        <button type="button" 
-                                                onclick="deselectAllInGroup('{{ $groupName }}')"
-                                                class="btn btn-xs btn-outline">
+                                        <button type="button" onclick="deselectAllInGroup('{{ $groupName }}')"
+                                            class="btn btn-xs btn-outline">
                                             Deselect All
                                         </button>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Permissions Grid -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                     @foreach ($permissions as $permission)
-                                        <label class="label cursor-pointer justify-start gap-3 p-2 hover:bg-base-100 rounded group-{{ str_replace(' ', '-', strtolower($groupName)) }}">
-                                            <input type="checkbox" 
-                                                   wire:model="selectedPermissions" 
-                                                   value="{{ $permission->name }}"
-                                                   class="checkbox checkbox-sm permission-checkbox"
-                                                   data-group="{{ str_replace(' ', '-', strtolower($groupName)) }}">
-                                            <span class="label-text">{{ ucfirst(str_replace('-', ' ', $permission->name)) }}</span>
+                                        <label
+                                            class="label cursor-pointer justify-start gap-3 p-2 hover:bg-base-100 rounded group-{{ str_replace(' ', '-', strtolower($groupName)) }}">
+                                            <input type="checkbox" wire:model="selectedPermissions"
+                                                value="{{ $permission->name }}"
+                                                class="checkbox checkbox-sm permission-checkbox"
+                                                data-group="{{ str_replace(' ', '-', strtolower($groupName)) }}">
+                                            <span
+                                                class="label-text">{{ ucfirst(str_replace('-', ' ', $permission->name)) }}</span>
                                         </label>
                                     @endforeach
                                 </div>
@@ -130,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="alert backdrop-blur-md bg-warning-content/90 border border-white/20 shadow">
+                    <div class="alert backdrop-blur-md bg-primary-content/70 border border-white/20 shadow">
                         <div class="text-sm">
                             <p class="font-medium mb-2">Catatan Penting:</p>
                             <ul class="list-disc list-inside space-y-1">
@@ -141,7 +140,7 @@
                         </div>
                     </div>
 
-                    <div class="alert backdrop-blur-md bg-info-content/90 border border-white/20 shadow">
+                    <div class="alert backdrop-blur-md bg-primary-content/50 border border-white/20 shadow">
                         <div class="text-sm">
                             <p class="font-medium mb-2">Contoh Role:</p>
                             <ul class="list-disc list-inside space-y-1">

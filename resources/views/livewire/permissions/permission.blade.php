@@ -126,7 +126,8 @@
                                         <td class="text-end">
                                             <div class="flex justify-end space-x-2">
                                                 @can('edit-permission')
-                                                    <a href="{{ route('permissions.edit', $permission->id) }}" wire:navigate
+                                                    <a href="{{ route('permissions.edit', $permission->id) }}"
+                                                        wire:navigate
                                                         class="btn btn-square btn-sm backdrop-blur-md bg-white/10 border border-white/20 shadow hover:bg-blue-500/20 hover:border-blue-500/40 transition-colors">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -192,11 +193,10 @@
                         <!-- Content -->
                         <div class="text-center">
                             <h3 class="text-lg font-bold mb-2">Konfirmasi Hapus Permission</h3>
-                            <p class="text-gray-600 mb-6">
+                            <p class="text-gray-600 mb-2">
                                 Apakah Anda yakin ingin menghapus permission <strong>"{{ $permission->name }}"</strong>?
-                                <br>
-                                <span class="text-sm text-red-600">Tindakan ini tidak dapat dibatalkan!</span>
                             </p>
+                            <p class="text-sm text-red-600 mb-4">Tindakan ini tidak dapat dibatalkan!</p>
                         </div>
 
                         <!-- Actions -->
@@ -204,7 +204,8 @@
                             <form method="dialog">
                                 <button class="btn">Batal</button>
                             </form>
-                            <button wire:click="deletePermission({{ $permission->id }})" class="btn btn-error text-white">
+                            <button wire:click="deletePermission({{ $permission->id }})"
+                                class="btn btn-error text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
